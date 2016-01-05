@@ -1,5 +1,6 @@
 # VoteOfLunch
-1)  Design and implement a JSON API using Hibernate/Spring/SpringMVC without frontend.
+1)  Original Task:
+	Design and implement a JSON API using Hibernate/Spring/SpringMVC without frontend.
 
 	The task is:
 	Build a voting system for deciding where to have lunch.
@@ -20,8 +21,8 @@
 	P.P.S.: Make sure everything works with latest version that is on github :)
 	P.P.P.S.: Asume that your API will used by a frontend developer to build frontend on top of that.
 
-2) Additional Requirements and Conceptual model of the system :
-	Main condition of original task was  'don't ask more questions about task'. 
+2)  Additional Requirements and Conceptual model of the system :
+	Main condition of original task was 'don't ask more questions about task'. 
 	So I tried my best to formulate reasonable requirements for such voting system for lunch menu.
 
 	Here they are my guesses.
@@ -75,7 +76,27 @@
 5) Test it.
 	You need JDK8 and Maven3.
 	You can see REST API documentation inside 'generated-docs'
-	To start application run inside 'VoteOfLunch '  command  : mvn spring-boot:run 
-	To test application run inside ' VoteOfLunch '  command  : mvn test
- 
+	To start application run inside 'VoteOfLunch' command : 'mvn spring-boot:run' 
+	To test application run inside ' VoteOfLunch' command : 'mvn test'
+
+6) Some Curls for test:  
+	curl -X GET -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: a54cf013-87a3-1c16-3ac5-2660cd6b9088" 'http://localhost:8080/users/' 
+	curl -X GET -H "Content-Type: application/json" -H "Authorization: Basic dXNlcjFAZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 95e0aa19-15f9-b5ca-5ed7-bc65ab7d118a" 'http://localhost:8080/users/2'
+	curl -X POST -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 398bc092-ba90-beda-d0ff-bc133ba90c5c" -d '{ "email":"r4@ya.ru", "password":"123456@_", "passwordRepeated":"123456@_"}' 'http://localhost:8080/users/'
+	curl -X PUT -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: b69b113b-bb97-e99f-0fed-e61c8c694a6c" -d '{ "email":"r4@ya.ru", "password":"123456@_", "passwordRepeated":"123456@_", "idUser":4}' 'http://localhost:8080/users/4'
+	curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 420ce499-21e9-8702-9830-a9c4b4169428" -d '' 'http://localhost:8080/users/4'
+	curl -X GET -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: b6c9b8cc-61f1-2e65-a858-72939b7a49f1" 'http://localhost:8080/restaurants/'
+	curl -X GET -H "Content-Type: application/json" -H "Authorization: Basic dXNlcjFAZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 78a8d567-fd73-941f-650c-dbe8097c37c8" 'http://localhost:8080/restaurants/2'
+	curl -X POST -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 4ea792b3-108d-d2f2-d489-02e65d4d25e2" -d '{ "idByAuthorities":"00000004", "address": "Naugarduko str. 36, Vilnius", "lunchEndHour":16, "phone": "+370 609 99002", "title":"Senoji Trobele"}' 'http://localhost:8080/restaurants/'
+	curl -X PUT -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: bbc60e5f-5a7b-86ce-5968-ffc623aca246" -d '{ "idByAuthorities":"00000004", "address": "Naugarduko str. 99, Vilnius", "lunchEndHour":16, "phone": "+370 609 99002", "title":"Senoji Trobele", "idRestaurant": 4}' 'http://localhost:8080/restaurants/4/'
+	curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: baaf45f6-8710-7c1f-f47a-8a9173902dff" -d '' 'http://localhost:8080/restaurants/4/'
+	curl -X GET -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 6de07b8c-7c62-6019-42f6-242471e451e9" 'http://localhost:8080/menus/'
+	curl -X GET -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 641a2e63-1c14-955b-16d3-a9c1bd35f979" 'http://localhost:8080/menus/2/'
+	curl -X POST -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 0bfea2e4-5944-2008-0bff-ea628568032b" -d '{"theRestaurantId": 2, "theDay": 1451152800000 ,                                    "theDishesDto": [ { "name":"dish #9" , "priceStr":"99.99"}, { "name":"dish #10" , "priceStr" : "100.100"} ]  }' 'http://localhost:8080/menus/'
+	curl -X PUT -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 225924b6-93a7-25db-4eb9-73e85358ffb3" -d '{ "idLunchMenu": 5, "theRestaurantId": 2, "theDay": 1451152800000 ,"theDishesDto": [ { "name":"dish #9" , "priceStr":"99.99"}, { "name":"dish #10" , "priceStr" : "100.100"} ]  }' 'http://localhost:8080/menus/5/'
+	curl -X PUT -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 665ed980-9129-d174-dfc7-cb218bbe3786" -d '' 'http://localhost:8080/menus/5/publish'
+	curl -X PUT -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 2527ac63-2ec2-52c9-953b-5820c6ced8c2" -d '' 'http://localhost:8080/menus/5/cancel'
+	curl -X POST -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: f8e1bb25-cc5e-b7e0-7a79-e8948949335a" -d '' 'http://localhost:8080/menus/5/vote'
+	curl -X POST -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 2ce367d2-1495-b296-c61d-3f97d363f808" -d '' 'http://localhost:8080/menus/5/unvote'
+	
 	
