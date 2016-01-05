@@ -23,7 +23,7 @@
 
 2)  Additional Requirements and Conceptual model of the system :
 	Main condition of original task was 'don't ask more questions about task'. 
-	So I tried my best to formulate reasonable requirements for such voting system for lunch menu.
+	So I tried my best to formulate reasonable requirements for such voting system of lunch menu.
 
 	Here they are my guesses.
 	- Each restaurant has hour when a lunch time has ended  and the lunch menu is no longer valid for that day .
@@ -49,7 +49,7 @@
 
 3)  Architecture. 
 
-	Let me explain my position.  On the one hand I wanted to show you what such good programmer I am.
+	Let me explain my position. On the one hand I wanted to show you 'what are such a good programmer I am'.
 	But on other the hand I tried to save your and my time to accomplish task quickly as possible 
 	because it is no more than a task for test.
 	So this is two main factors which had big influence on my choice of architecture 
@@ -75,6 +75,7 @@
 
 5) Test it.
 	You need JDK8 and Maven3.
+	All test users ('admin@gmail.com', 'user1@gmail.com', 'user2@gmail.com') have same password : '123456'.
 	You can see REST API documentation inside 'generated-docs'
 	To start application run inside 'VoteOfLunch' command : 'mvn spring-boot:run' 
 	To test application run inside ' VoteOfLunch' command : 'mvn test'
