@@ -80,7 +80,9 @@
 	To start application run inside 'VoteOfLunch' command : 'mvn spring-boot:run' 
 	To test application run inside ' VoteOfLunch' command : 'mvn test'
 
-6) Some Curls for test:  
+6) Some Curls for test.
+
+  
 	curl -X GET -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: a54cf013-87a3-1c16-3ac5-2660cd6b9088" 'http://localhost:8080/users/' 
 	curl -X GET -H "Content-Type: application/json" -H "Authorization: Basic dXNlcjFAZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 95e0aa19-15f9-b5ca-5ed7-bc65ab7d118a" 'http://localhost:8080/users/2'
 	curl -X POST -H "Content-Type: application/json" -H "Authorization: Basic YWRtaW5AZ21haWwuY29tOjEyMzQ1Ng==" -H "Cache-Control: no-cache" -H "Postman-Token: 398bc092-ba90-beda-d0ff-bc133ba90c5c" -d '{ "email":"r4@ya.ru", "password":"123456@_", "passwordRepeated":"123456@_"}' 'http://localhost:8080/users/'
