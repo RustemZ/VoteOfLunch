@@ -1,0 +1,29 @@
+= Api Documentation
+
+== Overview
+Api Documentation
+
+=== Version information
+Version: 1.0
+
+=== Contact information
+Contact: Contact Email
+
+=== License information
+License: Apache 2.0
+License URL: http://www.apache.org/licenses/LICENSE-2.0
+
+Terms of service: urn:tos
+
+=== URI scheme
+Host: localhost
+BasePath: /
+
+=== Tags
+
+* fake-spring-fox-controller: Fake Spring Fox Controller
+* restaurants-controller: All kind of operations under Restaurants
+* lunch-menus-controller: All kind of operations under lunch menus and voting on them
+* users-controller: All kind of operations under users
+
+

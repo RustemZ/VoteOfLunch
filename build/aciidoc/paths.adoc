@@ -1,0 +1,734 @@
+== Paths
+=== Create new LunchMenu.
+----
+POST /menus
+----
+
+==== Description
+:hardbreaks:
+Returns a new LunchMenu and persisted it to DB.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|BodyParameter|lunchMenuAsDto|new properties of LunchMenu|true|<<LunchMenuDto>>|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|OK|<<LunchMenu>>
+|201|Created|No Content
+|400|Reasons:
+1:Properties 'theDay' and 'theRestaurantId' must have value.
+2:lunchMenuAsDto.idLunchMenu set to other value than 0.
+3:Other combination of lunchMenuAsDto.theDay and lunchMenuAsDto.theRestaurantId already exists.|No Content
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role can have access to it.|No Content
+|404|Not Found|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* lunch-menus-controller
+
+=== Get All LunchMenus.
+----
+GET /menus
+----
+
+==== Description
+:hardbreaks:
+Returns list of all existed LunchMenus by page.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|QueryParameter|page|Page number of LunchMenus list|false|integer (int32)|
+|QueryParameter|size|Size of Page of LunchMenus list. |false|integer (int32)|
+|BodyParameter|authentication|authentication|false|<<Authentication>>|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|OK|<<Page«LunchMenu»>>
+|401|Only authenticated access allowed.|No Content
+|403|Forbidden|No Content
+|404|Not Found|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* lunch-menus-controller
+
+=== Find LunchMenu by ID.
+----
+GET /menus/{id}
+----
+
+==== Description
+:hardbreaks:
+Returns a LunchMenu if found it.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|id|ID of LunchMenu from DB|true|integer (int64)|
+|BodyParameter|authentication|authentication|false|<<Authentication>>|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|OK|<<Restaurant>>
+|401|Only authenticated access allowed.|No Content
+|403|Forbidden|No Content
+|404|LunchMenu with such Id not found.|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* lunch-menus-controller
+
+=== Update new LunchMenu.
+----
+PUT /menus/{id}
+----
+
+==== Description
+:hardbreaks:
+Returns NO_CONTENT if update was successful.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|id|ID of LunchMenu from DB|true|integer (int64)|
+|BodyParameter|lunchMenuDto|new properties of LunchMenu|true|<<LunchMenuDto>>|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|201|Created|No Content
+|204|No Content|No Content
+|400|Reasons:
+1:Properties 'theDay' and 'theRestaurantId' must have value.
+2:value of ID different between Id in URL and lunchMenuDto .
+3:Other combination of lunchMenuAsDto.theDay and lunchMenuAsDto.theRestaurantId already exists.|No Content
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role can have access to it.|No Content
+|404|LunchMenu with such Id not found.|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* lunch-menus-controller
+
+=== Cancel LunchMenu.
+----
+PUT /menus/{id}/cancel
+----
+
+==== Description
+:hardbreaks:
+Returns NO_CONTENT if cancel was successful.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|id|ID of LunchMenu from DB|true|integer (int64)|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|201|Created|No Content
+|204|No Content|No Content
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role can have access to it.|No Content
+|404|LunchMenu with such Id not found.|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* lunch-menus-controller
+
+=== Publish LunchMenu.
+----
+PUT /menus/{id}/publish
+----
+
+==== Description
+:hardbreaks:
+Returns NO_CONTENT if publication was successful.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|id|ID of LunchMenu from DB|true|integer (int64)|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|201|Created|No Content
+|204|No Content|No Content
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role can have access to it.|No Content
+|404|LunchMenu with such Id not found.|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* lunch-menus-controller
+
+=== UnVote for LunchMenu.
+----
+POST /menus/{id}/unvote
+----
+
+==== Description
+:hardbreaks:
+Returns NO_CONTENT if unVoting was successful.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|id|ID of LunchMenu from DB|true|integer (int64)|
+|BodyParameter|authentication|authentication |false|<<Authentication>>|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|OK|integer (int64)
+|201|Created|No Content
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role can have access to it.|No Content
+|404|LunchMenu with such Id not found.|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* lunch-menus-controller
+
+=== Vote for LunchMenu.
+----
+POST /menus/{id}/vote
+----
+
+==== Description
+:hardbreaks:
+Returns NO_CONTENT if voting was successful.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|id|ID of LunchMenu from DB|true|integer (int64)|
+|BodyParameter|authentication|authentication |false|<<Authentication>>|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|OK|integer (int64)
+|201|Created|No Content
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role can have access to it.|No Content
+|404|LunchMenu with such Id not found.|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* lunch-menus-controller
+
+=== Create new Restaurant.
+----
+POST /restaurants
+----
+
+==== Description
+:hardbreaks:
+Returns a new Restaurant and persisted it to DB.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|BodyParameter|restaurantNew|restaurantNew|true|<<Restaurant>>|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|OK|<<Restaurant>>
+|201|Created|No Content
+|400|Reasons:
+1:Properties "address", "lunchEndHour", "idByAuthorities", "title" must have value.
+2:restaurantNew.IdRestaurant set to other value than 0.
+3:Other restaurantNew.IdByAuthorities already exists.|No Content
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role can have access to it.|No Content
+|404|Not Found|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* restaurants-controller
+
+=== Get All Restaurants.
+----
+GET /restaurants
+----
+
+==== Description
+:hardbreaks:
+Returns list of all existed Restaurant by page.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|QueryParameter|page|Page number of Restaurant's list|false|integer (int32)|
+|QueryParameter|size|Size of Page of Restaurant's list. |false|integer (int32)|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|OK|<<Page«Restaurant»>>
+|401|Only authenticated access allowed.|No Content
+|403|Forbidden|No Content
+|404|Not Found|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* restaurants-controller
+
+=== Find Restaurant by ID.
+----
+GET /restaurants/{id}
+----
+
+==== Description
+:hardbreaks:
+Returns a Restaurant if found it.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|id|ID of Restaurant from DB|true|integer (int64)|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|OK|<<Restaurant>>
+|401|Only authenticated access allowed.|No Content
+|403|Forbidden|No Content
+|404|Restaurant with such Id not found.|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* restaurants-controller
+
+=== Update Restaurant.
+----
+PUT /restaurants/{id}
+----
+
+==== Description
+:hardbreaks:
+Returns NO_CONTENT if update was successful.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|id|ID of Restaurant from DB|true|integer (int64)|
+|BodyParameter|restaurant|new properties of Restaurant|true|<<Restaurant>>|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|201|Created|No Content
+|204|No Content|No Content
+|400|Reasons:
+1:Properties 'address', 'lunchEndHour', 'idByAuthorities', 'title' must have value.
+2:Other Restaurant.IdByAuthorities already exists.
+3:value of ID different between Id in URL and restaurant 
+|No Content
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role can have access.|No Content
+|404|Restaurant with such Id not found.|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* restaurants-controller
+
+=== Delete Restaurant by ID.
+----
+DELETE /restaurants/{id}
+----
+
+==== Description
+:hardbreaks:
+Returns NO_CONTENT if deletion was successful.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|id|id|true|integer (int64)|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|204|No Content|No Content
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role can have access.|No Content
+|404|Restaurant with such Id not found.|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* restaurants-controller
+
+=== Create new User.
+----
+POST /users
+----
+
+==== Description
+:hardbreaks:
+Returns a new User and persisted it to DB.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|BodyParameter|userDto|userDto|true|<<UserDto>>|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|OK|<<User>>
+|201|Created|No Content
+|400|Reasons:
+1:Passwords not same or too short.
+2:userDto.idUser set to other value than 0.
+3:userDto.email already exists.
+4:Bad role name.|No Content
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role can have access to it.|No Content
+|404|Not Found|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* application/json
+
+==== Tags
+
+* users-controller
+
+=== Get All Users.
+----
+GET /users
+----
+
+==== Description
+:hardbreaks:
+Returns list of all existed Users by page.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|QueryParameter|page|Page number of User's list|false|integer (int32)|
+|QueryParameter|size|Size of Page of User's list. |false|integer (int32)|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|OK|<<Page«User»>>
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role can have access to it.|No Content
+|404|Not Found|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* application/json
+
+==== Tags
+
+* users-controller
+
+=== Find User by ID.
+----
+GET /users/{id}
+----
+
+==== Description
+:hardbreaks:
+Returns a User if found him.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|id|ID of User from DB|true|integer (int64)|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|OK|<<User>>
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role or User has authenticated with this Id can have access.|No Content
+|404|User with such Id not found.|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* application/json
+
+==== Tags
+
+* users-controller
+
+=== Update User.
+----
+PUT /users/{id}
+----
+
+==== Description
+:hardbreaks:
+Returns NO_CONTENT if update was successful. Regular user can not change his Role.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|id|ID of User from DB|true|integer (int64)|
+|BodyParameter|userDto|new properties for User by userDto|true|<<UserDto>>|
+|BodyParameter|authentication|Authentication|false|<<Authentication>>|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|201|Created|No Content
+|204|No Content|No Content
+|400|Reasons:
+1:Passwords not same or too short.
+2:Other userDto.email already exists.
+3:Bad role name.
+3:value of ID different between Id in URL and userDto 
+|No Content
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role or User has authenticated with this Id can have access.|No Content
+|404|User with such Id not found.|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* application/json
+
+==== Tags
+
+* users-controller
+
+=== Delete User by ID.
+----
+DELETE /users/{id}
+----
+
+==== Description
+:hardbreaks:
+Returns NO_CONTENT if deletion was successful.
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|id|id|true|integer (int64)|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|204|No Content|No Content
+|401|Only authenticated access allowed.|No Content
+|403|Only user of ADMIN role or User has authenticated with this Id can have access.|No Content
+|404|User with such Id not found.|No Content
+|===
+
+==== Consumes
+
+* application/json
+
+==== Produces
+
+* application/json
+
+==== Tags
+
+* users-controller
+

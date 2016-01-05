@@ -1,0 +1,119 @@
+== Definitions
+=== Dish
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|idDish|Id of Dish from DB.|true|integer (int64)|
+|name|Description of Dish.|true|string|
+|priceStr|Price of Dish in string format.|true|string|
+|===
+
+=== DishDto
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|idDish|Id of Dish from DB.|false|integer (int64)|
+|name|Description of DishDto.|true|string|
+|priceStr|Price of DishDto in string format.|true|string|
+|===
+
+=== LunchMenu
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|countOfVotes|Count of votes for this menu.|false|integer (int64)|
+|idLunchMenu|Id of Lunch Menu from DB.|true|integer (int64)|
+|state|Current status of life cycle of lunch menu.|true|enum (CREATED, PUBLISHED, CANCELED)|
+|theDay|Day of relevancy of menu. Must send time code of this Date.|true|integer (int64)|
+|theDishes|Set of Dishes on menu.|true|<<Dish>> array|
+|theRestaurant|Link to Restaurant.|true|<<Restaurant>>|
+|===
+
+=== LunchMenuDto
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|idLunchMenu|Id of Lunch Menu from DB.|false|integer (int64)|
+|state|Current status of life cycle of lunch menu.|false|enum (CREATED, PUBLISHED, CANCELED)|
+|theDay|Day of relevancy of menu. Must send time code of this Date.|true|integer (int64)|
+|theDishesDto|Set of Dishes on menu.|false|<<DishDto>> array|
+|theRestaurantId|Link to Restaurant.|true|integer (int64)|
+|===
+
+=== Page«LunchMenu»
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|content||false|<<LunchMenu>> array|
+|first||false|boolean|
+|last||false|boolean|
+|number||false|integer (int32)|
+|numberOfElements||false|integer (int32)|
+|size||false|integer (int32)|
+|sort||false|<<Sort>>|
+|totalElements||false|integer (int64)|
+|totalPages||false|integer (int32)|
+|===
+
+=== Page«Restaurant»
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|content||false|<<Restaurant>> array|
+|first||false|boolean|
+|last||false|boolean|
+|number||false|integer (int32)|
+|numberOfElements||false|integer (int32)|
+|size||false|integer (int32)|
+|sort||false|<<Sort>>|
+|totalElements||false|integer (int64)|
+|totalPages||false|integer (int32)|
+|===
+
+=== Page«User»
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|content||false|<<User>> array|
+|first||false|boolean|
+|last||false|boolean|
+|number||false|integer (int32)|
+|numberOfElements||false|integer (int32)|
+|size||false|integer (int32)|
+|sort||false|<<Sort>>|
+|totalElements||false|integer (int64)|
+|totalPages||false|integer (int32)|
+|===
+
+=== Restaurant
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|address|Address of restaurant.|true|string|
+|idByAuthorities|Logical ID of restaurant given by authorities of its country.|true|string|
+|idRestaurant|Id of Restaurant from DB.|true|integer (int64)|
+|lunchEndHour|Hour of end of lunch in this restaurant.|true|integer (int32)|
+|phone|Phone number of restaurant.|true|string|
+|title|Title of restaurant.|true|string|
+|===
+
+=== User
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|email|Email of User as well as login name.|true|string|
+|idUser|Id of User inside DB.|true|integer (int64)|
+|role|Role of User: 'ADMIN' or 'REGULAR'.|true|enum (REGULAR, ADMIN)|
+|===
+
+=== UserDto
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|email|Email of User as well as login name.|true|string|
+|idUser|Id of User inside DB.|false|integer (int64)|
+|password|Password of User or empty if I don't want to change password. No less than 6 char. |true|string|
+|passwordRepeated|Must be equal with Password.|true|string|
+|role|Role of User: 'ADMIN' or 'REGULAR'.|true|enum (REGULAR, ADMIN)|
+|===
+
