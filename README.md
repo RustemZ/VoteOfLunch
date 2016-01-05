@@ -21,7 +21,9 @@
 	P.P.S.: Make sure everything works with latest version that is on github :)
 	P.P.P.S.: Asume that your API will used by a frontend developer to build frontend on top of that.
 
-2)  Additional Requirements and Conceptual model of the system :
+2)  Additional Requirements and Conceptual model of the system.
+
+
 	Main condition of original task was 'don't ask more questions about task'. 
 	So I tried my best to formulate reasonable requirements for such voting system of lunch menu.
 
@@ -67,6 +69,7 @@
 	I used basic authentication as its most simple. But of course I know that It's not very safe.
 
 4) Implementation.
+	
 	Please, see my code and other 95 integration test in my project 'vote-lunch' .
 	Also I must say that I don't implement all things that I wanted to do. 
 	For example It was a custom sorting, a localization, more advanced life cycle of lunch menu and etc. 
@@ -74,6 +77,7 @@
 	Let me say that I can resolve all this issues on next iteration. Of course if it would be .
 
 5) Test it.
+	
 	You need JDK8 and Maven3.
 	All test users ('admin@gmail.com', 'user1@gmail.com', 'user2@gmail.com') have same password : '123456'.
 	You can see REST API documentation inside 'generated-docs'
