@@ -14,7 +14,8 @@ import javax.persistence.*;
  * @author Rustem.Zhunusov_at_gmail.com
  */
 @Entity
-@Table(name = "vote")
+@Table(name = "vote",
+       uniqueConstraints = {@UniqueConstraint(columnNames = {"the_user", "the_menu"})})
 public class Vote {
 
     @Id
