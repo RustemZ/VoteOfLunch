@@ -70,7 +70,7 @@
 
 4) Implementation.
 	
-	Please, see my code and other 95 integration test in my project 'vote-lunch' .
+	Please, see my code and other 96 integration test in my project 'vote-lunch' .
 	Also I must say that I don't implement all things that I wanted to do. 
 	For example It was a custom sorting, a localization, more advanced life cycle of lunch menu and etc. 
 	Just didn't have enough time on it. 
